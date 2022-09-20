@@ -15,18 +15,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var actual = player1
     lateinit var name: TextView
 
-    //Las combinaciones ganadoras
-    val positionWin:Array<IntArray> = arrayOf(
-        intArrayOf(1, 2, 3),
-        intArrayOf(4, 5, 6),
-        intArrayOf(7, 8, 9),
-        intArrayOf(1, 4, 7),
-        intArrayOf(2, 5, 8),
-        intArrayOf(3, 6, 9),
-        intArrayOf(1, 5, 9),
-        intArrayOf(7, 5, 3)
-    )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,9 +79,36 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             name.text = "Le toca al jugador 1"
         }
 
+        //win()
+    }
+}
+//Funcion para encontrar al ganador, se cierra la aplicacion
+    /*private fun win() {
+        //Las combinaciones ganadoras
+        val positionWin:Array<IntArray> = arrayOf(
+            intArrayOf(1, 2, 3),
+            intArrayOf(4, 5, 6),
+            intArrayOf(7, 8, 9),
+            intArrayOf(1, 4, 7),
+            intArrayOf(2, 5, 8),
+            intArrayOf(3, 6, 9),
+            intArrayOf(1, 5, 9),
+            intArrayOf(7, 5, 3)
+        )
+        for (i in 0 until positionWin.size){
+            var val0 = positionWin[i][0]
+            var val1 = positionWin[i][1]
+            var val2 = positionWin[i][2]
+            if(posTake[val0]==posTake[val1] && posTake[val1] == posTake[val2]){
+            if(posTake[val0] != -1) {
+                if(posTake[val0]==player1) {
+                    name.text = "Jugador 1 ganó"
+                }else{
+                    name.text = "Jugador 2 ganó"
+                }
+               }
+            }
+        }
 
     }
-
-
-}
-
+*/
