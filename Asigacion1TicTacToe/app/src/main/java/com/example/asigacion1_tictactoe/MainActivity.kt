@@ -96,12 +96,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intArrayOf(7, 5, 3)
         )
         for (i in 0 until positionWin.size){
-            var val0 = positionWin[i][0]
-            var val1 = positionWin[i][1]
-            var val2 = positionWin[i][2]
-            if(posTake[val0]==posTake[val1] && posTake[val1] == posTake[val2]){
-            if(posTake[val0] != -1) {
-                if(posTake[val0]==player1) {
+            var posicion1 = positionWin[i][0]
+            var posicion2 = positionWin[i][1]
+            var posicion3 = positionWin[i][2]
+            if(posTake[posicion1]==posTake[posicion2] && posTake[posicion2] == posTake[posicion3]){
+            if(posTake[posicion1] != -1) {
+                if(posTake[posicion1]==player1) {
                     name.text = "Jugador 1 ganó"
                 }else{
                     name.text = "Jugador 2 ganó"
