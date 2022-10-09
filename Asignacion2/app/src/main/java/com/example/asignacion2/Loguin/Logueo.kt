@@ -14,10 +14,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.asignacion2.Routes
+import com.example.asignacion2.ui.theme.Asignacion2Theme
 
 
 @Composable
@@ -65,4 +68,11 @@ fun LoginPage(navController: NavHostController) {
         }
 
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    val navController = rememberNavController()
+    LoginPage(navController = navController)
 }

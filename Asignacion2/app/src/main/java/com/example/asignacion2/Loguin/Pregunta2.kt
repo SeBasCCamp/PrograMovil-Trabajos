@@ -1,16 +1,31 @@
 package com.example.asignacion2.Loguin
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.asignacion2.Routes
 
 @Composable
 fun Pregunta2(navController: NavHostController) {
@@ -19,7 +34,73 @@ fun Pregunta2(navController: NavHostController) {
     }
 }
 
+data class Pelicula(val nombre: String, val hora: String)
+
+private val listaPeliculas = listOf(
+    Pelicula(nombre = "Dr Strange 2", hora = "15:00"),
+    Pelicula(nombre = "Top Gun 2", hora = "17:00"),
+    Pelicula(nombre = "Detective Pikachu", hora = "11:00")
+)
+
 @Composable
 fun NavigationDrawer(navController: NavHostController) {
-    //ACA VA LA PREGUNTA 2
+    LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(20.dp))
+    {
+        item{
+            Text(
+                text = "Hola",
+                style = TextStyle(
+                    fontSize = 20.sp
+                )
+            )
+        }
+        items(listaPeliculas){
+
+            CarteleraDiseño(pelicula =it)
+
+        }
+    }
+}
+@Composable
+fun CarteleraDiseño(pelicula: Pelicula){
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceBetween
+    ){
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = null,
+                modifier = Modifier.size(50.dp)
+            )
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = pelicula.nombre,
+                    style = TextStyle(
+                        fontSize = 20.sp
+                    )
+                )
+                Text(
+                    text = pelicula.hora,
+                    style = TextStyle(
+                        fontSize = 20.sp
+                    )
+                )
+            }
+        }
+
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview2() {
+    val navController = rememberNavController()
+    Pregunta2(navController = navController)
 }
