@@ -15,26 +15,11 @@ import androidx.navigation.NavHostController
 @Composable
 fun Pregunta2(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
-        ScaffoldWithTopBar(navController)
+        NavigationDrawer(navController)
     }
 }
 
 @Composable
-fun ScaffoldWithTopBar(navController: NavHostController) {
-    Scaffold(
-        content = {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "Sign up",
-                    fontSize = 30.sp,
-                    color = Color.Black
-                )
-            }
-
-        })
+fun NavigationDrawer(navController: NavHostController) {
+    //ACA VA LA PREGUNTA 2
 }
