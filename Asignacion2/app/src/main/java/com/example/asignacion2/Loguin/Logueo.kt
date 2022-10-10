@@ -44,7 +44,7 @@ fun LoginPage(navController: NavHostController) {
 
 
         Text(text = "Cine Luna App", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Default),
-             textAlign = TextAlign.Center   )
+             textAlign = TextAlign.Center  )
 
         Spacer(modifier = Modifier.height(285.dp))
         Text(text = "Ingrese su nombre: ")
@@ -56,7 +56,7 @@ fun LoginPage(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.fillMaxSize()) {
             Button(
-                onClick = { navController.navigate(Routes.Pregunta2.route) },
+                onClick = { navController.navigate(Routes.inSideMain.route) },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
