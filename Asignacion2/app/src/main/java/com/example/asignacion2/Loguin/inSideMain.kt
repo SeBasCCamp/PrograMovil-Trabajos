@@ -1,19 +1,27 @@
 package com.example.asignacion2.Loguin
 
+import android.graphics.drawable.Icon
 import android.support.v4.os.IResultReceiver.Default
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.asignacion2.Routes
 import kotlinx.coroutines.CoroutineScope
@@ -21,98 +29,110 @@ import kotlinx.coroutines.launch
 import com.example.asignacion2.Routes.*
 
 
-@Composable
-fun insideMain(){
-    val navController = rememberNavController()
-    val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
-    val navigationItems = listOf(
-        Cartelera,
-        Sobre_nosotros,
-    )
-
-    Scaffold(
-        scaffoldState = scaffoldState,
-        topBar = {TopBar(scope, scaffoldState)},
-        drawerContent = {Drawer(
-            scope,
-            scaffoldState,
-            navController,
-            menu_items = navigationItems)}
-    ){
-        NavigationHost(navController)
-    }
-
+sealed class DrawerScreens(val title: String, val route : String) {
+    object cartelera : DrawerScreens("Cartelera", "cartelera")
+    object sobreNosotros : DrawerScreens("Sobre Nosotros", "sobreNosotros")
 }
 
+private val screens = listOf(
+    DrawerScreens.cartelera,
+    DrawerScreens.sobreNosotros,
+)
+
 @Composable
-fun TopBar(
-    scope : CoroutineScope,
-    scaffoldState: ScaffoldState
-){
+fun TopBar(title: String = "", buttonIcon: ImageVector, onButtonClicked: () -> Unit) {
     TopAppBar(
-        title = { Text(text="hola") },
+        title = {
+            Text(
+                text = title
+            )
+        },
         navigationIcon = {
-            IconButton(onClick = {
-                scope.launch {
-                    scaffoldState.drawerState.open()
-                }
-            }) {
-                Icon(imageVector = Icons.Default.Menu,
-                    contentDescription = "menu")
+            IconButton(onClick = { onButtonClicked() } ) {
+                Icon(buttonIcon, contentDescription = "")
             }
-        }
+        },
+        backgroundColor = MaterialTheme.colors.primaryVariant
     )
 }
 
 @Composable
 fun Drawer(
-    scope: CoroutineScope,
-    scaffoldState: ScaffoldState,
-    navController: NavController,
-    menu_items:List<Routes>
-){
+    modifier: Modifier = Modifier,
+    onDestinationClicked: (route:String) -> Unit
+) {
+    Column(
+        modifier
+            .fillMaxSize()
+    ) {
 
-    Column {
-        Spacer(modifier = Modifier
-            .fillMaxWidth()
-        )
-
-        menu_items.forEach{item->
-            DrawerItem(item = item){
-                navController.navigate(item.route){
-                    launchSingleTop = true
+        screens.forEach { screen ->
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = screen.title,
+                style = MaterialTheme.typography.h4,
+                modifier = Modifier.clickable {
+                    onDestinationClicked(screen.route)
                 }
-                scope.launch {
-                    scaffoldState.drawerState.close()
-                }
-            }
+            )
         }
     }
 }
 
 @Composable
-fun DrawerItem(
-    item:Routes,
-    onItemClick:(Routes)->Unit
-){
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onItemClick(item) }
+fun PantallaPrincipal() {
+    val navController = rememberNavController()
+    Surface(color = MaterialTheme.colors.background) {
+        val drawerState = rememberDrawerState(DrawerValue.Closed)
+        val scope = rememberCoroutineScope()
+        val openDrawer = {
+            scope.launch {
+                drawerState.open()
+            }
+        }
+        ModalDrawer(
+            drawerState = drawerState,
+            gesturesEnabled = drawerState.isOpen,
+            drawerContent = {
+                Drawer(
+                    onDestinationClicked = { route ->
+                        scope.launch {
+                            drawerState.close()
+                        }
+                        navController.navigate(route) {
+                            popUpTo = navController.graph.startDestinationId
+                            launchSingleTop = true
+                        }
+                    }
+                )
+            }
+        ){
+                NavHost(
+                    navController = navController,
+                    startDestination = DrawerScreens.cartelera.route)
+                {
+                    composable(DrawerScreens.cartelera.route){
+                        cartelera(
+                            openDrawer = {
+                                openDrawer()
+                            }
+                        )
+                    }
 
-    ) {
-        Text(text = item.route)
-
+                    composable(DrawerScreens.sobreNosotros.route){
+                        sobreNosotros(openDrawer = {
+                            openDrawer()
+                        })
+                    }
+                }
+        }
     }
 }
+
 
 @Preview
 @Composable
 fun Preview(){
-    insideMain()
+
+
 }
-
-
-
-
