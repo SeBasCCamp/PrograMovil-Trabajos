@@ -34,6 +34,8 @@ fun LoginMain(){
         composable(Routes.inSideMain.route) {
             insideMain()
         }
+
+
     }
 }
 

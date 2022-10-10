@@ -25,15 +25,6 @@ import com.example.asignacion2.ui.theme.Asignacion2Theme
 
 @Composable
 fun LoginPage(navController: NavHostController) {
-    /*Box(modifier = Modifier.fillMaxSize()) {
-        ClickableText(
-            text = AnnotatedString("Sign up here"),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(20.dp),
-            onClick = { },
-        )
-    }*/
     Column(
         modifier = Modifier.padding(20.dp),
         verticalArrangement = Arrangement.Center,

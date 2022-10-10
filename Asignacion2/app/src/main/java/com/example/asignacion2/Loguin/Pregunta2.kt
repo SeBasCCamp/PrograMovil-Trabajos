@@ -54,14 +54,6 @@ fun Pregunta2() {
 
     LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(20.dp))
     {
-        item{
-            Text(
-                text = "Hola" ,
-                style = TextStyle(
-                    fontSize = 20.sp
-                )
-            )
-        }
         items(listaPeliculas){
 
             CarteleraDiseño(pelicula =it)

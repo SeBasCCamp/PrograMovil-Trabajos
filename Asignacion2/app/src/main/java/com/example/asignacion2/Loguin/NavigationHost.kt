@@ -18,7 +18,9 @@ fun NavigationHost(navController: NavHostController){
         }
 
         composable(Sobre_nosotros.route){
-            sobreNosotros()
+            Sobre_nosotros
         }
     }
 }
+
+
