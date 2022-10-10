@@ -14,7 +14,7 @@ fun NavigationHost(navController: NavHostController){
     NavHost(navController = navController,
         startDestination = Pregunta2.route){
         composable(Pregunta2.route){
-            Pregunta2()
+            cartelera()
         }
 
         composable(Sobre_nosotros.route){

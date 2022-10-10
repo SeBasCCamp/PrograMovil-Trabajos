@@ -27,7 +27,7 @@ fun insideMain(){
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     val navigationItems = listOf(
-        Pregunta2,
+        Cartelera,
         Sobre_nosotros,
     )
 
