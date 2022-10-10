@@ -1,8 +1,8 @@
 package com.example.asignacion2.Loguin
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback.Default
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.asignacion2.Routes
 
 @Composable
-fun TopAppBarScreen() {
+fun TopAppBarScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -26,10 +28,22 @@ fun TopAppBarScreen() {
         }
     ) {
         Box(Modifier.fillMaxSize()) {
-            Text(
-                text = "Aca nombres y codigo",
-                modifier = Modifier.align(Alignment.Center)
-            )
+            Column(){
+                Text(text = "Fredy Sebastian Chávez Campos - 20182456")
+                Text(text = "Frank Caldas - 20190322")
+            }
+        }
+    }
+    Box(modifier = Modifier.fillMaxSize()) {
+        Button(
+            onClick = { navController.navigate(Routes.inSideMain.route) },
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .align(Alignment.BottomCenter)
+        ) {
+            Text(text = "Regresar")
         }
     }
 }
@@ -37,6 +51,7 @@ fun TopAppBarScreen() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview3(){
-    TopAppBarScreen()
+    val navController = rememberNavController()
+    TopAppBarScreen(navController = navController)
 }
 
