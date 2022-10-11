@@ -30,10 +30,9 @@ fun sobreNosotros(openDrawer: () ->Unit, navController: NavHostController) {
             onButtonClicked = { openDrawer() }
         )
         Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Home Page content here.")
+            modifier = Modifier.padding(top=20.dp)) {
+            Text(text = "Fredy Chávez - 20182456")
+            Text(text = "Frank Caldas - 20190322")
         }
     }
 
