@@ -52,11 +52,4 @@ fun sobreNosotros(openDrawer: () ->Unit, navController: NavHostController) {
     }
 }
 
-/*
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview3(){
-    val navController = rememberNavController()
-    sobreNosotros(navController = navController)
-}
-*/
+

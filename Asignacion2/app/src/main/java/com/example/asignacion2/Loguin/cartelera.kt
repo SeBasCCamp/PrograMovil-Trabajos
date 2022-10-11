@@ -23,14 +23,7 @@ import pe.edu.ulima.listadosapp.GestorPeliculas
 import java.util.Objects
 
 
-/*
-@Composable
-fun Pregunta2(navController: NavHostController) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        NavigationDrawer(navController)
-    }
-}
-*/
+
 
 data class Pelicula(val nombre: String, val hora: String, val routes: Routes)
 
@@ -113,11 +106,4 @@ fun CarteleraDiseño(pelicula: Pelicula) {
 
 
 
-/*
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview2() {
-    val navController = rememberNavController()
-    cartelera(navController = navController)
-}
-*/
+
