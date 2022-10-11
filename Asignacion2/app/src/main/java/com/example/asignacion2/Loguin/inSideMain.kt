@@ -122,7 +122,10 @@ fun PantallaPrincipal() {
                     composable(DrawerScreens.sobreNosotros.route){
                         sobreNosotros(openDrawer = {
                             openDrawer()
-                        })
+
+                        },
+                            navController
+                        )
                     }
                 }
         }

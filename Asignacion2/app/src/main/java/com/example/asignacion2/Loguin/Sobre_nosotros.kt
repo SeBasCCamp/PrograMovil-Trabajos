@@ -15,11 +15,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback.Default
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.asignacion2.Routes
 
 @Composable
-fun sobreNosotros(openDrawer: () ->Unit) {
+fun sobreNosotros(openDrawer: () ->Unit, navController: NavHostController) {
 
     Column(modifier = Modifier.fillMaxSize()) {
         TopBar(
@@ -37,9 +39,9 @@ fun sobreNosotros(openDrawer: () ->Unit) {
 
 
     Box(modifier = Modifier.fillMaxSize()) {
-        val navController = rememberNavController()
+
         Button(
-            onClick = { navController.navigate(Routes.inSideMain.route) },
+            onClick = { navController.navigate(DrawerScreens.cartelera.route)},
             shape = RoundedCornerShape(50.dp),
             modifier = Modifier
                 .fillMaxWidth()
