@@ -11,10 +11,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -27,12 +30,15 @@ import com.example.asignacion2.Routes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import com.example.asignacion2.Routes.*
+import com.example.asignacion2.Loguin.LoginPage
 
 
 sealed class DrawerScreens(val title: String, val route : String) {
     object cartelera : DrawerScreens("Cartelera", "cartelera")
     object sobreNosotros : DrawerScreens("Sobre Nosotros", "sobreNosotros")
 }
+
+
 
 private val screens = listOf(
     DrawerScreens.cartelera,
@@ -41,10 +47,13 @@ private val screens = listOf(
 
 @Composable
 fun TopBar(title: String = "", buttonIcon: ImageVector, onButtonClicked: () -> Unit) {
+
+
     TopAppBar(
         title = {
+            Text(text = "Hola  ")
             Text(
-                text = title
+                usuario.nombre
             )
         },
         navigationIcon = {
@@ -65,6 +74,8 @@ fun Drawer(
         modifier
             .fillMaxSize()
     ) {
+
+        Text(text = "Hola  " + usuario.nombre)
 
         screens.forEach { screen ->
             Spacer(modifier = Modifier.height(20.dp))
@@ -100,6 +111,7 @@ fun PantallaPrincipal() {
                             drawerState.close()
                         }
                         navController.navigate(route) {
+
                             popUpTo = navController.graph.startDestinationId
                             launchSingleTop = true
                         }

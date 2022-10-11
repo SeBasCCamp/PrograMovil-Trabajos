@@ -1,9 +1,11 @@
 package com.example.asignacion2.Loguin
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.mutableStateOf
@@ -23,26 +25,34 @@ import com.example.asignacion2.Routes
 import com.example.asignacion2.ui.theme.Asignacion2Theme
 
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun LoginPage(navController: NavHostController) {
+
+
+
     Column(
         modifier = Modifier.padding(20.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        val username = remember { mutableStateOf(TextFieldValue()) }
 
+        val username = remember { mutableStateOf(TextFieldValue()) }
 
         Text(text = "Cine Luna App", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Default),
              textAlign = TextAlign.Center  )
 
         Spacer(modifier = Modifier.height(285.dp))
+
+
         Text(text = "Ingrese su nombre: ")
         TextField(
             value = username.value,
             onValueChange = { username.value = it }
         )
+
+        usuario.nombre = username.value.text
 
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.fillMaxSize()) {
