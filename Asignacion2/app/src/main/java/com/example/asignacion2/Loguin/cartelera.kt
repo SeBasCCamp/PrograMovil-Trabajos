@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.asignacion2.Routes
 
+
 /*
 @Composable
 fun Pregunta2(navController: NavHostController) {
@@ -30,6 +31,7 @@ fun Pregunta2(navController: NavHostController) {
 data class Pelicula(val nombre: String, val hora: String)
 
 
+
 private val listaPeliculas = listOf(
     Pelicula(nombre = "Dr Strange 2", hora = "15:00"),
     Pelicula(nombre = "Top Gun 2", hora = "17:00"),
@@ -37,7 +39,9 @@ private val listaPeliculas = listOf(
 )
 
 
+
 @Composable
+
 fun cartelera(openDrawer: () ->Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopBar(

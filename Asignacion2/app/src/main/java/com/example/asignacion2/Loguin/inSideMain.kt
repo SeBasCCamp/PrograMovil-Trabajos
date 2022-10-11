@@ -17,6 +17,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,17 +39,16 @@ sealed class DrawerScreens(val title: String, val route : String) {
     object sobreNosotros : DrawerScreens("Sobre Nosotros", "sobreNosotros")
 }
 
-
-
 private val screens = listOf(
     DrawerScreens.cartelera,
     DrawerScreens.sobreNosotros,
 )
 
+
+
+
 @Composable
 fun TopBar(title: String = "", buttonIcon: ImageVector, onButtonClicked: () -> Unit) {
-
-
     TopAppBar(
         title = {
             Text(text = "Hola  ")
@@ -75,7 +75,9 @@ fun Drawer(
             .fillMaxSize()
     ) {
 
-        Text(text = "Hola  " + usuario.nombre)
+        Text(text = "Hola  " + usuario.nombre,
+            style = MaterialTheme.typography.h4,
+        )
 
         screens.forEach { screen ->
             Spacer(modifier = Modifier.height(20.dp))
