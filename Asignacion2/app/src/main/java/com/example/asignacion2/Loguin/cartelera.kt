@@ -69,7 +69,7 @@ fun CarteleraDiseño(pelicula: Pelicula) {
 
     val navController = rememberNavController()
 
-    Button(onClick = { navController.navigate(pelicula.routes.hashCode())}) {
+    Button(onClick = { navController.navigate(pelicula.routes.route)}) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
