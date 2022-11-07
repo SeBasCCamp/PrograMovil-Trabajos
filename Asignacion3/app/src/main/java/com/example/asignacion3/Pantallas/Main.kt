@@ -34,7 +34,7 @@ fun LoginMain(){
         }
 
         composable(Equipos.route) {
-            Equipos()
+            Equipos(navController = navController)
         }
     }
 }
