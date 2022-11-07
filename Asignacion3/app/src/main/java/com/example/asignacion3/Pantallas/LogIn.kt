@@ -1,6 +1,8 @@
 package com.example.asignacion3.LogIn
 
 import android.annotation.SuppressLint
+import android.media.tv.TvContract.Channels.Logo
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,6 +14,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalOf
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextFieldValue
@@ -39,13 +43,25 @@ fun LoginPage(navController: NavHostController) {
 
         val username = remember { mutableStateOf(TextFieldValue()) }
 
-        Text(text = "Cine Luna App", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Default),
+        Image(painter = painterResource(id = com.example.asignacion3.R.drawable.ulima),
+            modifier =Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+            contentDescription = "Logo")
+
+
+
+        Text(text = "Polla Ulima", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Default),
             textAlign = TextAlign.Center  )
 
-        Spacer(modifier = Modifier.height(285.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 
 
-        Text(text = "Ingrese su nombre: ")
+        Text(text = "20182456")
+        Text(text = "20190322")
+
+        Spacer(modifier = Modifier.height(80.dp))
+
         TextField(
             value = username.value,
             onValueChange = { username.value = it }
@@ -63,7 +79,7 @@ fun LoginPage(navController: NavHostController) {
                     .height(50.dp)
                     .align(Alignment.BottomCenter)
             ) {
-                Text(text = "Login")
+                Text(text = "Ingresar")
             }
         }
 

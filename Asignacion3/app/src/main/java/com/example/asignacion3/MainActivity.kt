@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.asignacion3.ui.theme.Asignacion3Theme
+import com.example.asignacion3.Pantallas.LoginMain
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +24,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    LoginMain()
+
                 }
             }
         }
@@ -38,6 +41,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     Asignacion3Theme {
-        Greeting("Android")
+        LoginMain()
     }
 }
