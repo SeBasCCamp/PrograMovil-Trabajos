@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.asignacion3.Pantallas.usuario
 import com.example.asignacion3.Routes
 import com.example.asignacion3.ui.theme.Asignacion3Theme
 
@@ -28,8 +29,6 @@ import com.example.asignacion3.ui.theme.Asignacion3Theme
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun LoginPage(navController: NavHostController) {
-
-
 
     Column(
         modifier = Modifier.padding(20.dp),
@@ -57,7 +56,7 @@ fun LoginPage(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.fillMaxSize()) {
             Button(
-                onClick = { navController.navigate(Routes.inSideMain.route) },
+                onClick = { navController.navigate(Routes.Equipos.route) },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
