@@ -7,7 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface EquiposAPI {
-    @GET("teams/{id}")
+    @GET("competitions/WC/teams/{id}")
     suspend fun getTeams(
         @Path("id") id: Int
     ): TeamsDto
