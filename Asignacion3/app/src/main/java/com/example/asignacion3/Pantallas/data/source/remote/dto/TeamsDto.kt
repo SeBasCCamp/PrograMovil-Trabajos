@@ -1,8 +1,8 @@
-package com.example.asignacion3.Pantallas.dto
+package com.example.asignacion3.Pantallas.data.source.remote.dto
 
-import com.example.asignacion3.Pantallas.model.Equipos
+import com.example.asignacion3.Pantallas.domain.model.Teams
 
-data class EquiposDto(
+data class TeamsDto(
     val competition: Competition,
     val count: Int,
     val filters: Filters,
@@ -10,13 +10,13 @@ data class EquiposDto(
     val teams: List<Team>
 )
 
-fun EquiposDto.toListEquipos(): List<Equipos>{
+fun TeamsDto.toListTeams(): List<Teams>{
     val resultEntries = teams.mapIndexed { _, entries ->
-        Equipos(
+        Teams(
             id = entries.id,
             name = entries.name,
-            founded = entries.founded,
-            crest = entries.crest
+            crest = entries.crest,
+            founded = entries.founded
         )
     }
     return resultEntries

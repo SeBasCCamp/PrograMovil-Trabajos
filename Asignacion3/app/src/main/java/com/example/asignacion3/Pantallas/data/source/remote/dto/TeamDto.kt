@@ -1,8 +1,7 @@
-package com.example.asignacion3.Pantallas.dto
+package com.example.asignacion3.Pantallas.data.source.remote.dto
+import com.example.asignacion3.Pantallas.domain.model.Team
 
-import com.example.asignacion3.Pantallas.model.Equipo
-
-data class EquipoDto(
+data class TeamDto(
     val address: String,
     val area: Area,
     val clubColors: String,
@@ -21,14 +20,14 @@ data class EquipoDto(
     val website: String
 )
 
-fun EquipoDto.toEquipo():Equipo {
-    return Equipo(
-        id = id,
-        name = name,
+fun TeamDto.toTeam(): Team {
+    return Team(
+        id=id,
+        name=name,
+        clubColors = clubColors,
+        crest = crest,
         venue = venue,
         website = website,
-        clubColors = clubColors,
-        address = address,
-        crest = crest
+        address = address
     )
 }

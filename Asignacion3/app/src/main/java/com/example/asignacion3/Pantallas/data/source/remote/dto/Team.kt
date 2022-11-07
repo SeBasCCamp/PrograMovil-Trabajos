@@ -1,4 +1,4 @@
-package com.example.asignacion3.Pantallas.dto
+package com.example.asignacion3.Pantallas.data.source.remote.dto
 
 data class Team(
     val address: String,
@@ -9,7 +9,6 @@ data class Team(
     val founded: Int,
     val id: Int,
     val lastUpdated: String,
-    val marketValue: Any,
     val name: String,
     val runningCompetitions: List<RunningCompetition>,
     val shortName: String,

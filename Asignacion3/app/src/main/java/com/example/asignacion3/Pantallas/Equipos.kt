@@ -15,5 +15,11 @@ fun Equipos(){
         val navigationActions = remember(navController){
             EquiposActions(navController)
         }
+
+        EquiposNavGraph(
+            navController = navController,
+            navigateToHome = navigationActions.navigateToHome,
+            navigateToDetail = navigationActions.navigateToDetails
+        )
     }
 }

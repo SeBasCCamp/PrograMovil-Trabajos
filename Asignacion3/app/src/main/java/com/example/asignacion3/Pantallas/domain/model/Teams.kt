@@ -1,6 +1,6 @@
-package com.example.asignacion3.Pantallas.model
+package com.example.asignacion3.Pantallas.domain.model
 
-data class Equipos(
+data class Teams(
     val id: Int,
     val name: String,
     val founded: Int,

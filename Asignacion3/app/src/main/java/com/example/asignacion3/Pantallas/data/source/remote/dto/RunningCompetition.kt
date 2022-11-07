@@ -1,4 +1,4 @@
-package com.example.asignacion3.Pantallas.dto
+package com.example.asignacion3.Pantallas.data.source.remote.dto
 
 data class RunningCompetition(
     val code: String,
